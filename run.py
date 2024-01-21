@@ -87,7 +87,22 @@ def get_5():
         column = sales.col_values(ind)
         columns.append(column[-5:])
     return columns
+
+def calculate_stock(data):
+    """
+    calculate stock data
+    """
+    print("calculating stock...\n")
+    new_stock = []
+
+    for column in data:
+        int_col = [int(num) for num in column]
+        average = sum(int_col)/len(int_col)
+        stock_num = average *1.1
+        new_stock.append(round(stock_num))
     
+    return new_stock
+
 
 def main():
     """
@@ -98,9 +113,10 @@ def main():
     new_surplus_data = calculate_surplus_data(sales_data)
     update_worksheet(sales_data, "sales")
     update_worksheet(new_surplus_data, "surplus")
+    sales_columns = get_5()
+    stock_data = calculate_stock(sales_columns)
+    update_worksheet(stock_data, "stock")
     
 
-#print("\nWelcome to love sandwiches data automation service.\n")
-#main()
-sales_columns = get_5()
-
+print("\nWelcome to love sandwiches data automation service.\n")
+main()
