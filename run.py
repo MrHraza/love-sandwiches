@@ -31,8 +31,9 @@ def validate_data(values):
     inside the try statement there will be a check to see if strings
     are there, also value error will be displayed if not intergers
     """
-
+    print(values)
     try: 
+        [int(value) for value in values]
         if len(values) != 6:
             raise ValueError(
                 f"Exactly six values are required, you have provided {len(values)}")
