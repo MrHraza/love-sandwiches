@@ -22,6 +22,24 @@ def get_sales_data():
     print("example: 1 , 2 , 3 , 4 , 5 , 6.\n")
 
     data_str = input("Enter you data here: ")
-    print(f"The data provided is {data_str}")
+    
+    sales_data = data_str.split(",")
+    validate_data(sales_data)
+
+def validate_data(values):
+    """
+    inside the try statement there will be a check to see if strings
+    are there, also value error will be displayed if not intergers
+    """
+
+    try: 
+        if len(values) != 6:
+            raise ValueError(
+                f"Exactly six values are required, you have provided {len(values)}")
+    except ValueError as e:
+        print(f"invalid data: {e}, please try again.\n")
+
+
+
 
 get_sales_data()
